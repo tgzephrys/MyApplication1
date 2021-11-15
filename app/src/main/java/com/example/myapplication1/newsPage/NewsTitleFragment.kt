@@ -28,6 +28,7 @@ class NewsTitleFragment: Fragment() {
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_news_title, container, false)
+
     }
 
     @SuppressLint("ResourceAsColor")
@@ -55,7 +56,7 @@ class NewsTitleFragment: Fragment() {
             val selectedView: View = view.findViewById(R.id.selected)
         }
 
-        @SuppressLint("ResourceAsColor")
+        //@SuppressLint("ResourceAsColor")
         override fun onCreateViewHolder(
             parent: ViewGroup,
             viewType: Int
@@ -74,7 +75,7 @@ class NewsTitleFragment: Fragment() {
 
         override fun getItemCount() = newsList.size
 
-        @SuppressLint("ResourceAsColor")
+        //@SuppressLint("ResourceAsColor")
         override fun onBindViewHolder(holder: NewsTitleAdapter.ViewHolder, position: Int) {
             holder.newsTitleImage.setImageResource(newsList[position].image)
             holder.newsTitle.text = newsList[position].title

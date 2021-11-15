@@ -1,30 +1,24 @@
 package com.example.myapplication1.main
 
 import android.Manifest
-import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.provider.ContactsContract
-import android.provider.MediaStore
-import android.system.Os.close
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.util.CursorUtil.getColumnIndex
 import com.example.myapplication1.R
 import com.example.myapplication1.common.ActivityController
+import com.example.myapplication1.TestActivity
+import com.example.myapplication1.homePage.CityActivity
 import kotlinx.android.synthetic.main.activity_main2.*
 
 
@@ -35,6 +29,7 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
     private var activityListView: RecyclerView? = null
 
     private val myActivities = ArrayList<MyActivity>()
+    private val activitiesAdapter =MyActivityAdapter(myActivities)
     private val mContacts = ArrayList<MyContact>()
     private var contactsAdapter = MyContactsAdapter(mContacts)
 
@@ -46,11 +41,15 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
 
         backButton = findViewById(R.id.backButton)
         backButton?.setOnClickListener{
-            var anime = ObjectAnimator.ofFloat()
+            val intent = Intent(this, CityActivity::class.java)
+            startActivity(intent)
         }
 
         callButton = findViewById(R.id.callButton)
-        callButton?.setOnClickListener(this)
+        callButton?.setOnClickListener{
+            val intent = Intent(this, TestActivity::class.java)
+            startActivity(intent)
+        }
 
         test_button.setOnClickListener(this)
 
@@ -69,7 +68,7 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
 
         ActivityController.addActivity(this)
 
-        Handler(Looper.getMainLooper())
+        //Handler(Looper.getMainLooper())
     }
 
     override fun onDestroy() {

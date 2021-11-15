@@ -2,6 +2,8 @@ package com.example.myapplication1.newsPage
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.example.myapplication1.R
 import com.example.myapplication1.common.ActivityController
 import kotlinx.android.synthetic.main.activity_news.*
@@ -14,7 +16,6 @@ class NewsActivity : AppCompatActivity() {
         supportActionBar?.hide()
         ActivityController.addActivity(this)
         title_bar.initBar(this)
-
     }
 
     override fun onDestroy() {

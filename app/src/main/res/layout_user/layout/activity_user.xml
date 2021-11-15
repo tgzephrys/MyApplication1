@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".userPage.UserActivity">
 
-    <com.example.myapplication1.common.mControls.TitleBarLayout
+    <com.example.myapplication1.common.mUI.TitleBarLayout
         android:id="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="4"
-                android:background="#997E7E7E"/>
+                android:background="#897E7E7E"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/card"
+
+    android:layout_width="match_parent"
+    android:layout_height="84dp"
+    android:layout_marginBottom="12dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="18dp">
+
+            <ImageView
+                android:id="@+id/cardBg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/sunny_card"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/city_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="15dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="海淀区"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"/>
+
+    <ImageView
+        app:layout_constraintLeft_toRightOf="@+id/city_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="2dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/location"/>
+
+    <TextView
+        android:id="@+id/temperature"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/city_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="17"
+        android:textColor="@color/white"
+        android:textSize="40sp"/>
+
+    <ImageView
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="9dp"
+        app:layout_constraintLeft_toRightOf="@+id/temperature"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/circle"/>
+
+    <TextView
+        android:id="@+id/weather"
+        app:layout_constraintRight_toRightOf="@+id/temperature"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="9dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="多云"
+        android:textColor="@color/white"
+        android:textSize="13sp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

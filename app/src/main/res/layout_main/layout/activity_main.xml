@@ -18,7 +18,8 @@
         android:shadowDx="5"
         android:shadowDy="5"
         android:shadowRadius="2"
-        android:text="This is a TextView"
+        android:text="This is a TextView❄"
+
 
         android:textSize="15sp"
          />
@@ -35,7 +36,7 @@
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Type Something:"
+        android:hint="Type Something❄:"
         android:maxLines="1"
         android:textSize="20sp"/>
 

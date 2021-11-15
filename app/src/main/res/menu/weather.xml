@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/search"
+        android:title="搜索城市"/>
+    <item
+        android:id="@+id/quality"
+        android:title="生活质量"/>
+    <item
+        android:id="@+id/lateinit"
+        android:title="待定"/>
+</menu>

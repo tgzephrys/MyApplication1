@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="78dp"
+    android:layout_height="270dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/daily_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="今天"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11/10"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="2dp"/>
+    <ImageView
+        android:id="@+id/daily_skyconIc"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_clear"/>
+    <TextView
+        android:id="@+id/daily_skycon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="晴"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="4dp"/>
+
+
+    <com.example.myapplication1.homePage.mView.DailyLineChart
+        android:id="@+id/line_chart"
+        android:layout_width="match_parent"
+        android:layout_height="130dp">
+
+    </com.example.myapplication1.homePage.mView.DailyLineChart>
+
+
+
+    <TextView
+        android:id="@+id/aqi_desc"
+        android:background="@drawable/card_rect_transparent_gray"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:paddingTop="1dp"
+        android:paddingBottom="1dp"
+        android:text="良"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

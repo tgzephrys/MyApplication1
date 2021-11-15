@@ -7,16 +7,18 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.example.myapplication1.R
+import com.example.myapplication1.TestActivity
 import com.example.myapplication1.common.ActivityController
 import com.example.myapplication1.common.mUtils.MyIterator
+import com.example.myapplication1.homePage.HomeActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         topButton = findViewById(R.id.topButton)
         topButton?.setOnClickListener(this)
         topTextView = findViewById(R.id.top_textView)
+        topTextView?.text = Date().toLocaleString()
         topTextView?.setOnClickListener(this)
         robotCat = findViewById(R.id.RobotCat)
         robotCat?.setOnClickListener(this)
@@ -113,19 +116,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 //        }
 
 
-        if (searching){
-            webView.visibility = View.INVISIBLE
-            return
-        }
-
-        val toast = Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT)
-        if(backTime == 0.toLong()  || (System.currentTimeMillis() - backTime > 1000 )){
-            toast.show()
-            backTime = System.currentTimeMillis()
-        }else{
-            ActivityController.quitApplication()
-        }
-
+//        if (searching){
+//            webView.visibility = View.INVISIBLE
+//            return
+//        }
+//
+//        val toast = Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT)
+//        if(backTime == 0.toLong()  || (System.currentTimeMillis() - backTime > 1000 )){
+//            toast.show()
+//            backTime = System.currentTimeMillis()
+//        }else{
+//            ActivityController.quitApplication()
+//        }
+        super.onBackPressed()
     }
 
 }

@@ -10,5 +10,4 @@
         android:id="@+id/quit_item"
         android:title="quit"/>
 
-
 </menu>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gary"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="14dp"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/toolbar"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/light_gary" >
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="29dp"
+                android:layout_height="27dp"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/back_img" />
+
+            <TextView
+                android:id="@+id/label"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="管理城市"
+                android:textSize="21sp"
+
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/edit"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/edit_rect"
+                    android:backgroundTint="@color/white"
+                    >
+
+                    <ImageView
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.05"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginTop="1dp"
+                        android:src="@drawable/search_icon_foreground"/>
+
+                    <EditText
+                        android:id="@+id/editText"
+                        android:layout_width="0dp"
+                        android:layout_weight="8"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:hint="搜索城市(中文/拼音)"
+                        android:textColor="@color/black"
+                        android:textSize="19sp"
+                        android:singleLine="true"
+                        android:background="@null"
+                        android:textCursorDrawable="@drawable/edit_cursor"
+                        android:imeOptions="actionSearch"/>
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="1dp"
+                        android:id="@+id/delete"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.8"
+                        android:layout_height="18dp"
+                        android:src="@drawable/delete"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/text"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="全部城市" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="610dp"
+                    android:layout_marginTop="6dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/list"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="6"
+                            android:background="@drawable/card_rect_light_gray" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/no_place"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="140dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/no_such_place"/>
+
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/weather_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sunny"
+        android:visibility="invisible"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="31dp">
+
+        <FrameLayout
+            android:id="@+id/choosingFrag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+        <ImageView
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="17dp"
+            android:id="@+id/back_top"
+            android:layout_width="29dp"
+            android:layout_height="27dp"
+            android:src="@drawable/back_img"
+            android:visibility="invisible"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/addButton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="45dp"
+            app:cardCornerRadius="24dp"
+            app:cardBackgroundColor="#28F1F2F4"
+            android:elevation="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:text="添加城市"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

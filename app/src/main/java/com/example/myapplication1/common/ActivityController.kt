@@ -1,9 +1,10 @@
 package com.example.myapplication1.common
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 
 object ActivityController{
-    var activityList = arrayListOf<AppCompatActivity>()
+    var activityList = arrayListOf<FragmentActivity>()
 
     fun quitApplication(){
         activityList.forEach{
@@ -11,11 +12,11 @@ object ActivityController{
         }
     }
 
-    fun addActivity(ac:AppCompatActivity){
+    fun addActivity(ac:FragmentActivity){
         activityList.add(ac)
     }
 
-    fun removeActivity(ac:AppCompatActivity){
+    fun removeActivity(ac:FragmentActivity){
         activityList.remove(ac)
     }
 }
