@@ -98,7 +98,7 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginRight="15dp"
                 android:text="上次更新时间： 16:22"
-                android:textColor="@color/light_gary"/>
+                android:textColor="@color/light_grey"/>
 
             <View
                 android:id="@+id/line1"
@@ -170,6 +170,26 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/card_rect_transparent_gray"/>
 
+            <com.example.myapplication1.homePage.mView.AqiView
+                android:id="@+id/aqi_view"
+                app:layout_constraintRight_toRightOf="@+id/splitLine"
+                app:layout_constraintLeft_toLeftOf="@+id/aqiBg"
+                app:layout_constraintTop_toBottomOf="@+id/aqi_title"
+                app:layout_constraintBottom_toBottomOf="@+id/aqiBg"
+                android:layout_width="160dp"
+                android:layout_height="160dp"/>
+
+            <TextView
+                android:id="@+id/aqi_title"
+                app:layout_constraintTop_toTopOf="@+id/aqiBg"
+                app:layout_constraintLeft_toLeftOf="@+id/aqiBg"
+                app:layout_constraintRight_toRightOf="@+id/splitLine"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="污染指数"/>
+
             <View
                 android:id="@+id/splitLine"
                 android:layout_width="1dp"
@@ -212,7 +232,7 @@
                 android:id="@+id/lifeIndexListView"
                 android:layout_width="match_parent"
                 android:layout_height="290dp"
-                android:paddingTop="7dp"
+                android:paddingTop="6.5dp"
                 app:layout_constraintTop_toTopOf="@+id/lifeIndexBg"
                 app:layout_constraintLeft_toLeftOf="@+id/lifeIndexBg" />
 

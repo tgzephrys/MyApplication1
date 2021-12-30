@@ -1,50 +1,69 @@
 package com.example.myapplication1
 
-import android.annotation.SuppressLint
-import android.app.ActionBar
-import android.content.Intent
-import android.graphics.Color
-import android.graphics.Rect
+import android.graphics.Outline
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.AttributeSet
 import android.util.Log
-import android.view.LayoutInflater
+import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
-import android.view.ViewGroup
+import android.view.ViewOutlineProvider
 import android.widget.FrameLayout
-import android.widget.ScrollView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.view.ViewCompat
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.findFragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.example.myapplication1.homePage.common.dp2px
-import com.example.myapplication1.homePage.common.getStatusBarHeight
-import com.example.myapplication1.homePage.common.px2dp
-import com.example.myapplication1.homePage.mView.DailyLineChart
-import com.example.myapplication1.main.MainActivity2
-import com.example.myapplication1.main.MyContact
+import com.example.myapplication1.homePage.common.toDp
+import com.example.myapplication1.homePage.common.toPx
 import kotlinx.android.synthetic.main.test_activity.*
-import kotlinx.android.synthetic.main.test_frag.*
+import kotlinx.android.synthetic.main.test_activity.edit
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.launch
+import kotlin.coroutines.coroutineContext
+
+
+object ShadowCompatPlus {
+    fun setShadow(view: View, alpha: Float, elevationDp: Float, radius: Int, horOffset: Int = 0, verOffset: Int = 0) {
+        val provider = object : ViewOutlineProvider() {
+            override fun getOutline(view: View, outline: Outline) {
+                outline.setRoundRect(0,
+                    0,
+                    view.width,
+                    view.height,
+                    radius.toFloat())
+                outline.alpha = alpha
+                Log.d("viewWidth","${view.width}dp ${view.height}dp")
+            }
+        }
+        view.clipToOutline = true
+        view.outlineProvider = provider
+        ViewCompat.setElevation(view, elevationDp.toFloat())
+    }
+}
+
 
 class TestActivity : AppCompatActivity() {
 
     val list = ArrayList<TestFragment>()
     var i = 0
+    var i2 = 0
 
     val man = supportFragmentManager
     val fragment = TestFragment()
-
     private val viewModel by lazy {
         ViewModelProvider(this).get(TestViewModel::class.java)
     }
+
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +74,22 @@ class TestActivity : AppCompatActivity() {
             list.add(TestFragment())
         }
 
+
+
+        viewModel.i.observe(this){
+            Toast.makeText(this, "null", Toast.LENGTH_SHORT).show()
+        }
+
+        edit.addTextChangedListener{
+            val content = it.toString()
+            if (content.isNotEmpty()){
+                test_text.text = content
+            }
+        }
+
+        CoroutineScope(Dispatchers.Main).launch {
+
+        }
 
         //mView.drawLines(intArrayOf(16, 2, 16, -1, 11, -1, 16, 0, 0))
 
@@ -69,10 +104,34 @@ class TestActivity : AppCompatActivity() {
                 i++
             }
             Log.d("changed: ","changed")
+            fl.removeView(
+                fl.findViewWithTag("TestView")
+            )
         }
 
+
         red.setOnClickListener {
-            mView.drawView(63, "良")
+//            val lp1 = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,FrameLayout.LayoutParams.MATCH_PARENT)
+//            val flc = FrameLayout(this)
+//
+//            flc.layoutParams = lp1
+//            flc.setBackgroundColor(resources.getColor(R.color.light_grey))
+//            flc.tag = "TestView"
+//            fl.addView(flc)
+
+            viewModel.i = MutableLiveData()
+            val lp2  = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, 50f.toPx())
+            val view = TextView(this)
+            lp2.gravity = Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL
+            lp2.setMargins(30,0,30,30)
+            view.setBackgroundColor(resources.getColor(R.color.light_green))
+            view.layoutParams = lp2
+            view.tag = "TestView"
+            view.setTextColor(resources.getColor(R.color.black))
+            view.text = i2++.toString()
+
+            fl.addView(view)
+            Log.d("flWidth","${fl.width.toFloat().toDp()}dp ${fl.height.toFloat().toDp()}dp")
         }
 
         holder.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
@@ -84,7 +143,7 @@ class TestActivity : AppCompatActivity() {
 
         s1.setOnClickListener {
 
-            window.statusBarColor = resources.getColor(R.color.light_gary)
+            window.statusBarColor = resources.getColor(R.color.light_grey)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
         }
 

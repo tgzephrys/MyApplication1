@@ -8,7 +8,7 @@
         android:id="@+id/selected"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_gary"
+        android:background="@color/light_grey"
         android:visibility="invisible"/>
 
     <LinearLayout
@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_alignParentBottom="true"
-                android:background="@color/light_gary"/>
+                android:background="@color/light_grey"/>
         </RelativeLayout>
 
     </LinearLayout>

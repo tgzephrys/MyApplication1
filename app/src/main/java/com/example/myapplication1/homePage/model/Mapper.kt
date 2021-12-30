@@ -193,12 +193,12 @@ fun getDailyList(weather: Weather): ArrayList<DailySky>{
 fun getAirInfoList(weather: Weather): ArrayList<AirInfo>{
     val airInfoList = ArrayList<AirInfo>()
     airInfoList.apply {
-        add(AirInfo("PM10", weather.realTime.ariQuality.pm10))
-        add(AirInfo("PM2.5",weather.realTime.ariQuality.pm25))
-        add(AirInfo("NO2",weather.realTime.ariQuality.no2))
-        add(AirInfo("SO2",weather.realTime.ariQuality.so2))
-        add(AirInfo("O3",weather.realTime.ariQuality.o3))
-        add(AirInfo("CO",weather.realTime.ariQuality.co))
+        add(AirInfo("PM10", weather.realTime.airQuality.pm10))
+        add(AirInfo("PM2.5",weather.realTime.airQuality.pm25))
+        add(AirInfo("NO2",weather.realTime.airQuality.no2))
+        add(AirInfo("SO2",weather.realTime.airQuality.so2))
+        add(AirInfo("O3",weather.realTime.airQuality.o3))
+        add(AirInfo("CO",weather.realTime.airQuality.co))
     }
     return airInfoList
 }

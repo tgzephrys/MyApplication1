@@ -15,32 +15,43 @@ class AqiView: View {
     private var desc = ""
     private var centerX = 0
     private var centerY = 0
-    private var paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
     private var circleRadius = 0
     private var cLeft = 0
     private var cTop = 0
     private var cRight = 0
     private var cBottom = 0
-    private var marginBottom = 16f.toPx()
+    private var marginBottom = 12f.toPx()
     private var usableHeight = 0
 
 
-    private val lineWidth = 10f.toPx()
+    private val lineWidth = 13f.toPx()
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
 
     override fun onDraw(canvas: Canvas?) {
-        paint.style = Paint.Style.STROKE
-        paint.color = resources.getColor(R.color.light_gary)
-        paint.strokeWidth = lineWidth.toFloat()
+
+        val paint = Paint(Paint.ANTI_ALIAS_FLAG)
         paint.strokeCap = Paint.Cap.ROUND
-        canvas?.drawArc(
-            cLeft.toFloat(), cTop.toFloat(),
-            cRight.toFloat(), cBottom.toFloat(),
-            120f, 300f,
-            false, paint
-        )
+
+        paint.color = Color.WHITE
+        paint.textSize = 14f.toPx().toFloat()
+        canvas?.drawText(desc, centerX.toFloat() - 6f.toPx(), centerY - 14F.toPx().toFloat(), paint)
+        paint.textSize = 26f.toPx().toFloat()
+        canvas?.drawText(aqi.toString(), centerX.toFloat() - 14f.toPx(), centerY + 20f.toPx().toFloat(), paint)
+
+        paint.textSize = 12f.toPx().toFloat()
+        paint.color = resources.getColor(R.color.light_grey)
+        canvas?.drawText("0",
+            (circleRadius / 2).toFloat() - 5f.toPx(),
+            (centerY + circleRadius).toFloat() - 5f.toPx(), paint)
+        canvas?.drawText("500",
+            (circleRadius + (circleRadius / 2)).toFloat() - 5f.toPx(),
+            (centerY + circleRadius).toFloat() - 5f.toPx(), paint)
+
+        paint.strokeWidth = lineWidth.toFloat()
+        paint.style = Paint.Style.STROKE
 
         when(aqi){
             in 0..50 -> paint.color = resources.getColor(R.color.light_green)
@@ -51,22 +62,18 @@ class AqiView: View {
         canvas?.drawArc(
             cLeft.toFloat(), cTop.toFloat(),
             cRight.toFloat(), cBottom.toFloat(),
-            120f, ((aqi / 500) * 300).toFloat(),
+            135f, (aqi / 500f) * 270f,
             false, paint
         )
 
-        paint.color = Color.WHITE
-        paint.textSize = 14f.toPx().toFloat()
-        canvas?.drawText(desc, centerX.toFloat(), centerY - 20F.toPx().toFloat(), paint)
-        paint.textSize = 30f.toPx().toFloat()
-        canvas?.drawText(aqi.toString(), centerX.toFloat(), centerY - 14f.toPx().toFloat(), paint)
+        paint.color = Color.parseColor("#32F9FbFD")
+        canvas?.drawArc(
+            cLeft.toFloat(), cTop.toFloat(),
+            cRight.toFloat(), cBottom.toFloat(),
+            135f, 270f,
+            false, paint
+        )
 
-        paint.textSize = 12f.toPx().toFloat()
-        paint.color = resources.getColor(R.color.light_gary)
-        canvas?.drawText("0", (circleRadius / 2).toFloat(),
-            (centerY + circleRadius).toFloat(), paint)
-        canvas?.drawText("500", circleRadius + (circleRadius / 2).toFloat(),
-            (centerY + circleRadius).toFloat(), paint)
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -92,6 +99,8 @@ class AqiView: View {
             cBottom = usableHeight - 10f.toPx()
         }
     }
+
+
 
     fun drawView(aqi: Int, desc: String){
         this.aqi = aqi

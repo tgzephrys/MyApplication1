@@ -40,6 +40,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +68,8 @@ class HomeActivity : AppCompatActivity() {
                     background.setImageResource(getBg(it).bg)
                 } else background.setImageResource(R.drawable.original_bg)
 
-                name_out.text = viewModel.cities[position].place!!.name
+                if (viewModel.cities.isNotEmpty())
+                    name_out.text = viewModel.cities[position].place!!.name
 //                if (viewModel.cities[position].place!!.name != "海淀区")
 //                    isLocation_out.visibility = View.GONE
             }
@@ -221,6 +223,7 @@ class HomeActivity : AppCompatActivity() {
                 val newCityPager = CityPagerFrag()
                 newCityPager.weather = weather
                 newCityPager.place = place
+                //viewModel.scrollDistance.value?.let { newCityPager.scroll(it) }
                 viewModel.cities.add(newCityPager)
                 cityAdapter.notifyDataSetChanged()
                 PlaceDao.savePlace(place)
@@ -268,6 +271,7 @@ class HomeActivity : AppCompatActivity() {
         override fun getItemId(position: Int): Long {
             return viewModel.cities[position].hashCode().toLong()
         }
+
 
         override fun containsItem(itemId: Long): Boolean {
             return LongArray(viewModel.cities.size){

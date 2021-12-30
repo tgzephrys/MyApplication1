@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.MyApplication1" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/light_gary</item>
-        <item name="colorPrimaryVariant">@color/light_gary</item>
+        <item name="colorPrimary">@color/light_grey</item>
+        <item name="colorPrimaryVariant">@color/light_grey</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -17,7 +17,7 @@
     <!--天气标题栏样式-->
     <style name="weatherTitleBar">
         <item name="colorPrimary">@color/transparent</item>
-        <item name="colorPrimaryDark">@color/light_gary</item>
+        <item name="colorPrimaryDark">@color/light_grey</item>
         <item name="android:actionOverflowButtonStyle">@style/OverflowStyle</item>
     </style>
 

@@ -19,7 +19,7 @@ import com.example.myapplication1.homePage.mView.DailyLineChart
 import com.example.myapplication1.homePage.model.*
 import com.example.myapplication1.homePage.model.netWork.entity.PlaceResponse
 import kotlinx.android.synthetic.main.city_pager.*
-import java.time.LocalDate
+import okhttp3.internal.notify
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -84,6 +84,8 @@ class CityPagerFrag : Fragment(){
         }
 
         if (weather != null && place != null) refreshWeather()
+
+        viewModel.value.scrollDistance.value?.let { scroll(it) }
     }
 
     fun refreshWeather(){
@@ -93,6 +95,10 @@ class CityPagerFrag : Fragment(){
         refreshTime.text = "上次更新时间： ${Date().date2timeStr()}"
         nameGo.text = place!!.name
         realTimeTemper.text = weather!!.realTime.temperature.toInt().toString()
+        aqi_view.drawView(weather!!.realTime.airQuality.aqi.chn.toInt(),
+                          weather!!.realTime.airQuality.description.chn)
+
+
 
         hourlyList.clear()
         hourlyList.addAll(getHourlyList(weather!!))

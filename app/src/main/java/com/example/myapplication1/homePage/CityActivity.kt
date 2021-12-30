@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication1.R
 import com.example.myapplication1.common.ActivityController
 import com.example.myapplication1.homePage.model.Weather
+import com.example.myapplication1.homePage.model.getBg
 import com.example.myapplication1.homePage.model.netWork.entity.PlaceResponse
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_city.*
@@ -39,6 +40,9 @@ class CityActivity : AppCompatActivity() {
 
         init()
 
+
+
+
         window.statusBarColor = resources.getColor(R.color.transparent)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 
@@ -46,7 +50,7 @@ class CityActivity : AppCompatActivity() {
         val listManager = LinearLayoutManager(this)
         listManager.orientation = LinearLayoutManager.VERTICAL
         val cityListAdapt = CityListAdapt(viewModel.placeList)
-        list.adapter =cityListAdapt
+        list.adapter = cityListAdapt
         list.layoutManager = listManager
 
         delete.setOnClickListener{
@@ -177,6 +181,7 @@ class CityActivity : AppCompatActivity() {
         tra.commit()
         addButton.visibility = View.VISIBLE
         weather_bg.visibility = View.VISIBLE
+        weather_bg.setImageResource(getBg(weather).bg)
         back_top.visibility = View.VISIBLE
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
     }
@@ -238,7 +243,6 @@ class CityActivity : AppCompatActivity() {
             holder.placeAddress.text = spannableStr
             holder.placeAddress.setOnClickListener {
                 viewModel.getWeather(viewModel.placeList[position])
-                Log.d("position: ","$position")
             }
             if (position == itemCount) holder.bottomLine.visibility = View.INVISIBLE
         }

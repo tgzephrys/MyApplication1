@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_gary"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/light_grey"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -17,7 +18,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/light_gary" >
+            android:background="@color/light_grey" >
 
             <ImageView
                 android:id="@+id/back"
@@ -153,7 +154,8 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/sunny"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        tools:visibility="visible"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

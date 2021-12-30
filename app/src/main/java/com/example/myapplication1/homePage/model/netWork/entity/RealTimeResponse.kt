@@ -9,7 +9,7 @@ data class RealTimeResponse(val status: String, val result: Result){
     data class RealTime(val skycon: String,   //天气描述
                         val temperature: Float,
                         val humidity: Float,   //湿度
-                        @SerializedName("air_quality") val ariQuality: AirQuality,
+                        @SerializedName("air_quality") val airQuality: AirQuality,
                         val wind: Wind,
                         val apparent_temperature: Float)//体表温度
 

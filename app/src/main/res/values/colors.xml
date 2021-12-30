@@ -10,7 +10,7 @@
     <color name="gray">#FF3D3F41</color>
     <color name="blue">#FF0000FF</color>
     <color name="light_blue">#FF2244FF</color>
-    <color name="light_gary">#FFF1F3F4</color>
+    <color name="light_grey">#FFEEEEF4</color>
     <color name="transparent_light_gary">#26F2F3F5</color><!-- 主页卡片颜色 -->
     <color name="text_gray">#FFCCCCCC</color>
     <color name="transparent">#00000000</color>
